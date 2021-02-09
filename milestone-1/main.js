@@ -27,6 +27,7 @@ new Vue({
         this.titleText = userText;
 
         // da qui , faccio partire la chiamata ajax con axios a tmdb
+        // passo l'apikey come parametro all'url tramite un oggetto usato come secondo parametro di axios
         axios.get(apiUri + 'search/movie', {
           params: {
             api_key: apiKey,
