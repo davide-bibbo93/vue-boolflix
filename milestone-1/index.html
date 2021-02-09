@@ -10,33 +10,40 @@
     <title>Boolflix</title>
   </head>
   <body>
-
+    <!-- contenitore totale -->
     <div id="app">
+
       <header>
+        <!-- sezione logo -->
         <div class="left-header fl">
           <h1>BOOLFLIX</h1>
         </div>
+        <!-- sezione input e button -->
         <div class="right-header fl">
-          <input class="search-input" type="text" name="" value="" placeholder="Cerca il tuo film...">
-          <button class="search-button" type="button" name="button">Cerca</button>
+          <input class="search-input" type="text" name="" value=""
+          placeholder="Cerca il tuo film..." v-model="searchText" @keyup.enter="search">
+          <button class="search-button" type="button" name="button" @click="search">Cerca</button>
         </div>
       </header>
 
+      <!-- sezione risultati -->
       <div class="container" id="result-container">
-        <h2>Ricerca in corso...</h2>
-        <h2>Risultati per: ""</h2>
-        <h2>Nessun risultato trovato per ""</h2>
+        <!-- sezione carimento -->
+        <h2 v-if="loading">Ricerca in corso...</h2>
+        <h2 v-else-if="titleText && results.length">Risultati per: "{{titleText}}"</h2>
+        <h2 v-else-if="titleText">Nessun risultato trovato per "{{titleText}}"</h2>
 
-        <ul class="cards fl">
-          <li>Titolo: </li>
-          <li>Titolo Originale: </li>
-          <li>Lingua: </li>
-          <li>Voto</li>
+        <!-- sezione carte film stampate a schermo -->
+        <ul class="cards fl" v-for="result in results">
+          <li>Titolo: {{result.title}}</li>
+          <li>Titolo Originale: {{result.original_title}}</li>
+          <li>Lingua: {{result.original_language}}</li>
+          <li>Voto: {{result.vote_average}}</li>
         </ul>
       </div>
-
+      <!-- fine sezione risultati -->
     </div>
-
+    <!-- fine contenitore totale -->
 
     <script src="main.js" charset="utf-8"></script>
   </body>
