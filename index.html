@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Boolflix</title>
+  </head>
+  <body>
+
+    <div id="app">
+      <header>
+        <div class="left-header fl">
+          <h1>BOOLFLIX</h1>
+        </div>
+        <div class="right-header fl">
+          <input class="search-input" type="text" name="" value="" placeholder="Cerca il tuo film...">
+          <button class="search-button" type="button" name="button">Cerca</button>
+        </div>
+      </header>
+
+      <div class="container" id="result-container">
+        <h2>Ricerca in corso...</h2>
+        <h2>Risultati per: ""</h2>
+        <h2>Nessun risultato trovato per ""</h2>
+
+        <ul class="cards fl">
+          <li>Titolo</li>
+          <li>Titolo Originale</li>
+          <li>Lingua</li>
+          <li>Voto</li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <script src="main.js" charset="utf-8"></script>
+  </body>
+</html>
