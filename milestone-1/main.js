@@ -1,5 +1,5 @@
 // definisco variabili API
-const apiUrl = 'https://api.themoviedb.org/3/';
+const apiUri = 'https://api.themoviedb.org/3/';
 const apiKey = 'd697a14c56f5dc39b8a8034bfcea2fc1';
 
 // parte Vue Js
@@ -27,7 +27,7 @@ new Vue({
         this.titleText = userText;
 
         // da qui , faccio partire la chiamata ajax con axios a tmdb
-        axios.get(apiUrl + 'search/movie', {
+        axios.get(apiUri + 'search/movie', {
           params: {
             api_key: apiKey,
             query: userText
