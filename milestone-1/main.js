@@ -32,12 +32,13 @@ new Vue({
             api_key: apiKey,
             query: userText
           }
-        }).then((resp) => {
+        })
+          .then((resp) => {
             console.log('Array di film selezionati: ', resp.data.results);
             this.results = resp.data.results;
             // la proprietà loading diventa di nuovo false
             this.loading = false;
-        });
+          });
 
       }
     }
