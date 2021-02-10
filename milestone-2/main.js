@@ -27,7 +27,7 @@ new Vue({
         // e metto il testo ricercato nel titolo
         this.titleText = userText;
 
-        // da qui , faccio partire la chiamata ajax con axios a tmdb
+        // da qui , faccio partire la chiamata ajax con axios a tmdb per i film
         // passo l'apikey come parametro all'url tramite un oggetto usato come secondo parametro di axios
         axios.get(apiUri + 'search/movie', {
           params: {
@@ -37,6 +37,21 @@ new Vue({
         })
           .then((resp) => {
             console.log('Array di film selezionati: ', resp.data.results);
+            this.results = resp.data.results;
+            // la proprietà loading diventa di nuovo false
+            this.loading = false;
+          });
+
+        // e poi, faccio partire la chiamata ajax con axios a tmdb per le serie tv
+        // passo sempre l'apikey come parametro all'url tramite un oggetto usato come secondo parametro di axios
+        axios.get(apiUri + 'search/tv', {
+          params: {
+            api_key: apiKey,
+            query: userText
+          }
+        })
+          .then((resp) => {
+            console.log('Array di serie tv selezionati: ', resp.data.results);
             this.results = resp.data.results;
             // la proprietà loading diventa di nuovo false
             this.loading = false;

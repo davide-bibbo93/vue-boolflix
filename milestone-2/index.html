@@ -37,8 +37,8 @@
 
         <!-- sezione carte film stampate a schermo -->
         <ul class="cards fl" v-for="result in results">
-          <li>Titolo: {{result.title}}</li>
-          <li>Titolo Originale: {{result.original_title}}</li>
+          <li>Titolo: {{result.title ? result.title : result.name}}</li>
+          <li>Titolo Originale: {{result.original_title ? result.original_title : result.original_name}}</li>
           <li v-if="flags.includes(result.original_language)">Lingua:
             <img :src="getFlags(result.original_language)" :alt="result.original_language" style="width: 25px;">
           </li>
