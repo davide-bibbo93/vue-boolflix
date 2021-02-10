@@ -23,7 +23,7 @@
         <!-- sezione input e button -->
         <div class="right-header fl">
           <input class="search-input" type="text" name="" value=""
-          placeholder="Cerca il tuo film..." v-model="searchText" @keyup.enter="search">
+          placeholder="Cerca un film o serie-tv..." v-model="searchText" @keyup.enter="search">
           <button class="search-button" type="button" name="button" @click="search">Cerca</button>
         </div>
       </header>
@@ -39,8 +39,9 @@
         <ul class="cards fl" v-for="result in results">
           <li>Titolo: {{result.title ? result.title : result.name}}</li>
           <li>Titolo Originale: {{result.original_title ? result.original_title : result.original_name}}</li>
-          <li v-if="flags.includes(result.original_language)">Lingua:
-            <img :src="getFlags(result.original_language)" :alt="result.original_language" style="width: 25px;">
+          <li>Lingua:
+            <img :src="getFlags(result.original_language)" :alt="result.original_language"
+            style="height: 15px; vertical-align: middle;">
           </li>
           <li v-if="result.vote_average > 0">Voto:
             <i v-for="i in getStars(result.vote_average)" class="fa fa-star"></i>

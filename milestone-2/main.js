@@ -10,7 +10,7 @@ new Vue({
     searchText: '',
     titleText: '',
     loading: false,
-    flags: ['it', 'en']
+    flags: []
   },
   methods: {
     search() {
@@ -37,7 +37,7 @@ new Vue({
         })
           .then((resp) => {
             console.log('Array di film selezionati: ', resp.data.results);
-            this.results = resp.data.results;
+            this.results = this.results.concat(resp.data.results);
             // la proprietà loading diventa di nuovo false
             this.loading = false;
           });
@@ -52,7 +52,7 @@ new Vue({
         })
           .then((resp) => {
             console.log('Array di serie tv selezionati: ', resp.data.results);
-            this.results = resp.data.results;
+            this.results = this.results.concat(resp.data.results);
             // la proprietà loading diventa di nuovo false
             this.loading = false;
           });
@@ -63,8 +63,8 @@ new Vue({
       return Math.ceil(vote / 2);
     },
     getFlags(language) {
-      return 'img/' + language + '.png';
-    }
+      return 'img/flags/' + language + '.png';
+    },
   },
   mounted() {
 

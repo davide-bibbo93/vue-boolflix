@@ -10,7 +10,7 @@ body{
 }
 
 #app {
-  background-color: #1E2D3B;
+  background-color: #333;
   min-height: 100vh;
 }
 
@@ -39,7 +39,7 @@ li{
 /* fine common settings */
 /* header settings */
 header{
-  background-color: #000;
+  background-color: #333;
   height: 70px;
 }
 
@@ -51,6 +51,7 @@ header{
   color: red;
   margin-left: 20px;
   line-height: 70px;
+  font-weight: bold;
 }
 
 .right-header{
@@ -60,16 +61,19 @@ header{
 .search-input{
   margin-top: 20px;
   height: 32px;
+  outline: none;
+  padding: 5px;
 }
 
 .search-button{
-  height: 34px;
+  height: 33px;
   padding: 5px;
   margin-right: 20px;
   background-color: red;
   color: #fff;
   border: 1px solid #000;
   cursor: pointer;
+  outline: none;
 }
 
 #result-container{
