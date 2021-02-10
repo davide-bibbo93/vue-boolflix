@@ -37,13 +37,13 @@
 
         <!-- sezione carte film stampate a schermo -->
         <ul class="cards fl" v-for="result in results">
-          <li>Titolo: {{result.title ? result.title : result.name}}</li>
-          <li>Titolo Originale: {{result.original_title ? result.original_title : result.original_name}}</li>
-          <li>Lingua:
+          <li><h2>Titolo:</h2> {{result.title ? result.title : result.name}}</li>
+          <li><h2>Titolo Originale:</h2> {{result.original_title ? result.original_title : result.original_name}}</li>
+          <li><h2>Lingua:</h2>
             <img :src="getFlags(result.original_language)" :alt="result.original_language"
             style="height: 15px; vertical-align: middle;">
           </li>
-          <li v-if="result.vote_average > 0">Voto:
+          <li v-if="result.vote_average > 0"><h2>Voto:</h2>
             <i v-for="i in getStars(result.vote_average)" class="fa fa-star"></i>
             <i v-for="i in (5 - getStars(result.vote_average))" class="fa fa-star-o"></i>
           </li>

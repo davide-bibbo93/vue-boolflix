@@ -92,3 +92,8 @@ header{
   padding: 20px 10px;
   color: #fff;
 }
+
+.cards h2{
+  display: inline-block;
+  font-size: 15px;
+}
