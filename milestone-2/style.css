@@ -32,6 +32,10 @@ body{
 .fr{
   float: right;
 }
+
+li{
+  list-style: none;
+}
 /* fine common settings */
 /* header settings */
 header{
@@ -81,6 +85,6 @@ header{
   width: 200px;
   height: 300px;
   margin: 20px;
-  padding: 20px;
+  padding: 20px 10px;
   color: #fff;
 }

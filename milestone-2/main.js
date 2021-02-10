@@ -9,7 +9,8 @@ new Vue({
     results: [],
     searchText: '',
     titleText: '',
-    loading: false
+    loading: false,
+    flags: ['it', 'en']
   },
   methods: {
     search() {
@@ -45,6 +46,9 @@ new Vue({
     },
     getStars(vote) {
       return Math.ceil(vote / 2);
+    },
+    getFlags(language) {
+      return 'img/' + language + '.png';
     }
   },
   mounted() {

@@ -39,7 +39,9 @@
         <ul class="cards fl" v-for="result in results">
           <li>Titolo: {{result.title}}</li>
           <li>Titolo Originale: {{result.original_title}}</li>
-          <li>Lingua: {{result.original_language}}</li>
+          <li v-if="flags.includes(result.original_language)">Lingua:
+            <img :src="getFlags(result.original_language)" :alt="result.original_language" style="width: 25px;">
+          </li>
           <li v-if="result.vote_average > 0">Voto:
             <i v-for="i in getStars(result.vote_average)" class="fa fa-star"></i>
             <i v-for="i in (5 - getStars(result.vote_average))" class="fa fa-star-o"></i>
