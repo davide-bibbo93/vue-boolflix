@@ -10,7 +10,6 @@ new Vue({
     searchText: '',
     titleText: '',
     loading: false,
-    flags: []
   },
   methods: {
     search() {
