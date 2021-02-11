@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="img/b-logo.jpg">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Boolflix</title>
+  </head>
+  <body>
+    <!-- contenitore totale -->
+    <div id="app">
+
+      <header>
+        <!-- sezione logo -->
+        <div class="left-header fl">
+          <img src="img/logo-boolflix.png" alt="">
+          <ul class="menu-list">
+            <li>Home</li>
+            <li>Serie TV</li>
+            <li>Film</li>
+            <li>Originali</li>
+            <li>Aggiunti di recente</li>
+            <li>La mia lista</li>
+          </ul>
+        </div>
+        <!-- sezione input e button -->
+        <div class="right-header fl">
+          <input class="search-input" type="text" name="" value=""
+          placeholder="Cerca un film o serie-tv..." v-model="searchText" @keyup.enter="search">
+          <button class="search-button" type="button" name="button" @click="search"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <ul class="notice-list fr">
+            <li><i class="fa fa-gift" style="padding-right: 25px;"></i></li>
+            <li><i class="fa fa-bell"></i></li>
+            <div class="user">
+              <li><i class="fa fa-user" style="margin-left: 10px;"></i></li>
+              <li><i class="fa fa-angle-down" style="font-size: 15px; margin-left: 10px;"></i></li>
+            </div>
+          </ul>
+        </div>
+      </header>
+
+      <!-- sezione risultati -->
+      <div class="container" id="result-container">
+        <!-- sezione carimento -->
+        <h2 v-if="loading">Ricerca in corso...</h2>
+        <h2 v-else-if="titleText && results.length">Risultati per: "{{titleText}}"</h2>
+        <h2 v-else-if="titleText">Nessun risultato trovato per "{{titleText}}"</h2>
+
+        <!-- sezione carte film e serie tv -->
+        <div class="title" v-if="results.length > 0">Film e serieTV abbinati alla ricerca: </div>
+        <div class="cards fl" v-for="result in results">
+
+          <div class="inside-cards">
+            <!-- front-end carte -->
+            <div class="front-card">
+              <img :src="getPoster(result.poster_path)" alt="">
+            </div>
+            <!-- back-end carte -->
+            <div class="back-card">
+              <ul>
+                <li><h2>Titolo: </h2> {{result.title ? result.title : result.name}}</li>
+                <li><h2>Titolo Originale: </h2> {{result.original_title ? result.original_title : result.original_name}}</li>
+                <li><h2>Lingua: </h2>
+                  <img :src="getFlags(result.original_language)" :alt="result.original_language"
+                  style="height: 15px; vertical-align: middle; margin-left: 5px;">
+                </li>
+                <li v-if="result.vote_average > 0" class="color-star">
+                  <h2>Voto:</h2>
+                  <i v-for="i in getStars(result.vote_average)" class="fa fa-star"></i>
+                  <i v-for="i in (5 - getStars(result.vote_average))" class="fa fa-star-o"></i>
+                </li>
+                <li v-else><h2>Voto:</h2> n/a</li>
+                <li v-if="result.overview"><h2>Overview: </h2> {{result.overview}}</li>
+                <li v-else><h2>Overview: </h2> n/a</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- fine sezione film e serie tv -->
+      </div>
+      <!-- fine sezione risultati -->
+    </div>
+    <!-- fine contenitore totale -->
+
+    <script src="main.js" charset="utf-8"></script>
+  </body>
+</html>
