@@ -80,7 +80,7 @@
                 </li>
                 <li v-else><h2>Voto:</h2> n/a</li>
                 <h2>Genere: </h2>
-                <span v-for="genreId in result.genre_ids">{{getGenre(genreId)}}<br></span>
+                <span v-for="genre in result.genre_ids">{{getGenre(genre)}}<br></span>
                 <li v-if="result.overview"><h2>Descrizione: </h2> {{result.overview}}</li>
                 <li v-else><h2>Descrizione: </h2> n/a</li>
               </ul>
