@@ -126,6 +126,8 @@ header{
   height: 30px;
   outline: none;
   padding: 5px;
+  background-color: #2b2b2b;
+  color: #fff;
 }
 
 .search-button{
