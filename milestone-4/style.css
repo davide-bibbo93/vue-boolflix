@@ -43,15 +43,39 @@ header{
   height: 70px;
 }
 
-.left-header, .right-header{
-  width: 50%;
+.left-header{
+  width: 60%;
 }
+
+ .right-header {
+   width: 40%;
+ }
 
 .left-header > img{
   color: red;
   height: 50px;
   margin: 10px 0 0 20px;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.left-header .menu-list {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  bottom: 38px;
+}
+
+.left-header .menu-list li{
+  margin-left: 20px;
+  padding-left: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #b3b3b3;
+}
+
+.left-header .menu-list li:hover{
+  color: #fff;
   cursor: pointer;
 }
 
