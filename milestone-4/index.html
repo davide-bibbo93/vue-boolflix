@@ -18,7 +18,7 @@
       <header>
         <!-- sezione logo -->
         <div class="left-header fl">
-          <h1>BOOLFLIX</h1>
+          <img src="img/logo-boolflix.png" alt="">
         </div>
         <!-- sezione input e button -->
         <div class="right-header fl">
@@ -35,20 +35,35 @@
         <h2 v-else-if="titleText && results.length">Risultati per: "{{titleText}}"</h2>
         <h2 v-else-if="titleText">Nessun risultato trovato per "{{titleText}}"</h2>
 
-        <!-- sezione carte film stampate a schermo -->
-        <ul class="cards fl" v-for="result in results">
-          <li><h2>Titolo:</h2> {{result.title ? result.title : result.name}}</li>
-          <li><h2>Titolo Originale:</h2> {{result.original_title ? result.original_title : result.original_name}}</li>
-          <li><h2>Lingua:</h2>
-            <img :src="getFlags(result.original_language)" :alt="result.original_language"
-            style="height: 15px; vertical-align: middle;">
-          </li>
-          <li v-if="result.vote_average > 0"><h2>Voto:</h2>
-            <i v-for="i in getStars(result.vote_average)" class="fa fa-star"></i>
-            <i v-for="i in (5 - getStars(result.vote_average))" class="fa fa-star-o"></i>
-          </li>
-          <li><h2>Overview:</h2></li>
-        </ul>
+        <!-- sezione carte film e serie tv -->
+        <div class="cards fl" v-for="result in results">
+          <div class="inside-cards">
+            <!-- front-end carte -->
+            <div class="front-card">
+              <img :src="getPoster(result.poster_path)" alt="">
+            </div>
+            <!-- back-end carte -->
+            <div class="back-card">
+              <ul>
+                <li><h2>Titolo: </h2> {{result.title ? result.title : result.name}}</li>
+                <li><h2>Titolo Originale: </h2> {{result.original_title ? result.original_title : result.original_name}}</li>
+                <li><h2>Lingua: </h2>
+                  <img :src="getFlags(result.original_language)" :alt="result.original_language"
+                  style="height: 15px; vertical-align: middle; margin-left: 5px;">
+                </li>
+                <li v-if="result.vote_average > 0" class="color-star">
+                  <h2>Voto:</h2>
+                  <i v-for="i in getStars(result.vote_average)" class="fa fa-star"></i>
+                  <i v-for="i in (5 - getStars(result.vote_average))" class="fa fa-star-o"></i>
+                </li>
+                <li v-else><h2>Voto:</h2> n/a</li>
+                <li v-if="result.overview"><h2>Overview: </h2> {{result.overview}}</li>
+                <li v-else><h2>Overview: </h2> n/a</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- fine sezione film e serie tv -->
       </div>
       <!-- fine sezione risultati -->
     </div>

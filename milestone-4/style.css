@@ -47,11 +47,12 @@ header{
   width: 50%;
 }
 
-.left-header > h1{
+.left-header > img{
   color: red;
-  margin-left: 20px;
-  line-height: 70px;
+  height: 50px;
+  margin: 10px 0 0 20px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .right-header{
@@ -85,15 +86,52 @@ header{
 }
 
 .cards{
-  border: 1px solid #fff;
   width: 200px;
   height: 300px;
   margin: 20px;
-  padding: 20px 10px;
   color: #fff;
+  cursor: pointer;
 }
 
 .cards h2{
   display: inline-block;
   font-size: 15px;
+  color: #fff;
+}
+
+.inside-cards {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.front-card, .back-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.front-card img {
+  width: 100%;
+  height: 100%;
+}
+
+.cards:hover .inside-cards > .back-card {
+  display: block;
+  background-color: #000;
+}
+
+.back-card {
+  color: #b3b3b3;
+  padding: 20px;
+  overflow: auto;
+  display: none;
+}
+
+.back-card ul li {
+  padding: 2px 0;
+}
+
+.color-star{
+  color: #FFD700;
 }

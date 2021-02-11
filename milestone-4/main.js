@@ -2,7 +2,7 @@
 const apiUri = 'https://api.themoviedb.org/3/';
 const apiKey = 'd697a14c56f5dc39b8a8034bfcea2fc1';
 const apiImg = 'https://image.tmdb.org/t/p/';
-const sizeImg = 'w185';
+const sizeImg = 'w342';
 
 // parte Vue Js
 new Vue({
@@ -38,7 +38,8 @@ new Vue({
         })
           .then((resp) => {
             console.log('Array di film selezionati: ', resp.data.results);
-            this.results = this.results.concat(resp.data.results);
+            // usato spread operator
+            this.results = [...this.results, ...resp.data.results];
             // la proprietà loading diventa di nuovo false
             this.loading = false;
           });
@@ -53,7 +54,8 @@ new Vue({
         })
           .then((resp) => {
             console.log('Array di serie tv selezionati: ', resp.data.results);
-            this.results = this.results.concat(resp.data.results);
+            // usato spread operator
+            this.results = [...this.results, ...resp.data.results];
             // la proprietà loading diventa di nuovo false
             this.loading = false;
           });
@@ -66,6 +68,12 @@ new Vue({
     getFlags(language) {
       return 'img/flags/' + language + '.png';
     },
+    getPoster(poster_path) {
+      if(poster_path) {
+        return apiImg + sizeImg + poster_path;
+      }
+      return 'img/not-found.png';
+    }
   },
   mounted() {
 
