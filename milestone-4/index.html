@@ -52,6 +52,7 @@
         <h2 v-else-if="titleText">Nessun risultato trovato per "{{titleText}}"</h2>
 
         <!-- sezione carte film e serie tv -->
+        <div class="title" v-if="results.length > 0">Film e serieTV abbinati alla ricerca: </div>
         <div class="cards fl" v-for="result in results">
 
           <div class="inside-cards">
