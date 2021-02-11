@@ -33,7 +33,8 @@ new Vue({
         axios.get(apiUri + 'search/movie', {
           params: {
             api_key: apiKey,
-            query: userText
+            query: userText,
+            language: 'it-IT',
           }
         })
           .then((resp) => {
@@ -49,7 +50,8 @@ new Vue({
         axios.get(apiUri + 'search/tv', {
           params: {
             api_key: apiKey,
-            query: userText
+            query: userText,
+            language: 'it-IT',
           }
         })
           .then((resp) => {
