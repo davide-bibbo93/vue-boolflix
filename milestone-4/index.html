@@ -33,6 +33,14 @@
           <input class="search-input" type="text" name="" value=""
           placeholder="Cerca un film o serie-tv..." v-model="searchText" @keyup.enter="search">
           <button class="search-button" type="button" name="button" @click="search"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <ul class="notice-list fr">
+            <li><i class="fa fa-gift" style="padding-right: 25px;"></i></li>
+            <li><i class="fa fa-bell"></i></li>
+            <div class="user">
+              <li><i class="fa fa-user" style="margin-left: 10px;"></i></li>
+              <li><i class="fa fa-angle-down" style="font-size: 15px; margin-left: 10px;"></i></li>
+            </div>
+          </ul>
         </div>
       </header>
 
@@ -45,6 +53,7 @@
 
         <!-- sezione carte film e serie tv -->
         <div class="cards fl" v-for="result in results">
+
           <div class="inside-cards">
             <!-- front-end carte -->
             <div class="front-card">

@@ -44,11 +44,11 @@ header{
 }
 
 .left-header{
-  width: 60%;
+  width: 65%;
 }
 
  .right-header {
-   width: 40%;
+   width: 35%;
  }
 
 .left-header > img{
@@ -76,6 +76,7 @@ header{
 
 .left-header .menu-list li:hover{
   color: #fff;
+  transform: scale(1.05);
   cursor: pointer;
 }
 
@@ -83,22 +84,48 @@ header{
   text-align: right;
 }
 
+.right-header .notice-list {
+  display: flex;
+  position: relative;
+  top: 18px;
+  font-size: 25px;
+  color: #b3b3b3;
+  margin-left: 25px;
+}
+
+.right-header .notice-list .user{
+  display: flex;
+  width: 60px;
+  margin: 0 15px 0 20px;
+  border-radius: 8px;
+}
+
+.right-header .notice-list i:hover,
+.right-header .notice-list .user:hover{
+  transform: scale(1.05);
+  color: #fff;
+  cursor: pointer;
+}
+
 .search-input{
   margin-top: 20px;
-  height: 32px;
+  height: 30px;
   outline: none;
   padding: 5px;
 }
 
 .search-button{
-  height: 33px;
+  height: 31px;
   padding: 5px 10px;
-  margin-right: 20px;
   background-color: red;
   color: #fff;
   border: 1px solid #000;
   cursor: pointer;
   outline: none;
+}
+
+.search-button i:hover{
+  transform: scale(1.05);
 }
 
 #result-container{
