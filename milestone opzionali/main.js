@@ -50,7 +50,6 @@ new Vue({
           });
 
         // e poi, faccio partire la chiamata ajax con axios a tmdb per le serie tv
-        // passo sempre l'apikey come parametro all'url tramite un oggetto usato come secondo parametro di axios
         axios.get(apiUri + 'search/tv', {
           params: {
             api_key: apiKey,
@@ -66,6 +65,7 @@ new Vue({
             this.loading = false;
           });
 
+        // e poi, faccio partire la chiamata ajax con axios a tmdb per i generi di film
         axios.get(apiUri + 'genre/movie/list', {
           params: {
             api_key: apiKey,
@@ -80,6 +80,7 @@ new Vue({
             this.loading = false;
           });
 
+        // e poi, faccio partire la chiamata ajax con axios a tmdb per i generi delle serie tv
         axios.get(apiUri + 'genre/tv/list', {
           params: {
             api_key: apiKey,
