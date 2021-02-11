@@ -35,9 +35,10 @@
           <button class="search-button" type="button" name="button" @click="search"><i class="fa fa-search" aria-hidden="true"></i></button>
           <ul class="notice-list fr">
             <li><i class="fa fa-gift" style="padding-right: 25px;"></i></li>
-            <div class="">
-              <li><i class="fa fa-bell"></i></li>
+            <div class="notice-bell">
+              <span>1</span>
             </div>
+            <li><i class="fa fa-bell"></i></li>
             <div class="user">
               <li><i class="fa fa-user" style="margin-left: 10px;"></i></li>
               <li><i class="fa fa-angle-down" style="font-size: 15px; margin-left: 10px;"></i></li>
@@ -52,6 +53,7 @@
         <h2 v-if="loading">Ricerca in corso...</h2>
         <h2 v-else-if="titleText && results.length">Risultati per: "{{titleText}}"</h2>
         <h2 v-else-if="titleText">Nessun risultato trovato per "{{titleText}}"</h2>
+        <h2 v-else-if="results.length <= 0">Ancora nessuna ricerca effettuata...</h2>
 
         <!-- sezione carte film e serie tv -->
         <div class="title" v-if="results.length > 0">Film e serieTV abbinati alla ricerca: </div>
@@ -77,8 +79,10 @@
                   <i v-for="i in (5 - getStars(result.vote_average))" class="fa fa-star-o"></i>
                 </li>
                 <li v-else><h2>Voto:</h2> n/a</li>
-                <li v-if="result.overview"><h2>Overview: </h2> {{result.overview}}</li>
-                <li v-else><h2>Overview: </h2> n/a</li>
+                <h2>Genere: </h2>
+                <span v-for="genreId in result.genre_ids">{{getGenre(genreId)}}<br></span>
+                <li v-if="result.overview"><h2>Descrizione: </h2> {{result.overview}}</li>
+                <li v-else><h2>Descrizione: </h2> n/a</li>
               </ul>
             </div>
           </div>

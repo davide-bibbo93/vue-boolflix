@@ -12,6 +12,10 @@ new Vue({
     searchText: '',
     titleText: '',
     loading: false,
+    genresArray:[]
+  },
+  mounted() {
+
   },
   methods: {
     search() {
@@ -55,13 +59,40 @@ new Vue({
           }
         })
           .then((resp) => {
-            console.log('Array di serie tv selezionati: ', resp.data.results);
+            console.log('Array di serie tv selezionate: ', resp.data.results);
             // usato spread operator
             this.results = [...this.results, ...resp.data.results];
             // la proprietà loading diventa di nuovo false
             this.loading = false;
           });
 
+        axios.get(apiUri + 'genre/movie/list', {
+          params: {
+            api_key: apiKey,
+            language: 'it-IT',
+          }
+        })
+          .then((resp) => {
+            console.log('Array di generi di film selezionati: ', resp.data.genres);
+            // usato spread operator
+            this.genresArray = [...this.genresArray, ...resp.data.genres];
+            // la proprietà loading diventa di nuovo false
+            this.loading = false;
+          });
+
+        axios.get(apiUri + 'genre/tv/list', {
+          params: {
+            api_key: apiKey,
+            language: 'it-IT',
+          }
+        })
+          .then((resp) => {
+            console.log('Array di generi di serie tv selezionate: ', resp.data.genres);
+            // usato spread operator
+            this.genresArray = [...this.genresArray, ...resp.data.genres];
+            // la proprietà loading diventa di nuovo false
+            this.loading = false;
+          });
       }
     },
     getStars(vote) {
@@ -75,10 +106,16 @@ new Vue({
         return apiImg + sizeImg + poster_path;
       }
       return 'img/not-found.png';
-    }
+    },
+    getGenre(elementGenre){
+      const findEl = this.genresArray.find((element) => {
+        return element.id == elementGenre;
+      });
+      if (findEl) {
+        return findEl.name;
+      }
+      return elementGenre;
+    },
   },
-  mounted() {
-
-  }
 });
 Vue.config.devtools = true;
