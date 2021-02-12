@@ -12,7 +12,8 @@ new Vue({
     searchText: '',
     titleText: '',
     loading: false,
-    genresArray:[]
+    genresArray: [],
+    actors: '',
   },
   mounted() {
 
@@ -99,23 +100,52 @@ new Vue({
     getStars(vote) {
       return Math.ceil(vote / 2);
     },
+
     getFlags(language) {
       return 'img/flags/' + language + '.png';
     },
+
     getPoster(poster_path) {
       if(poster_path) {
         return apiImg + sizeImg + poster_path;
       }
       return 'img/not-found.png';
     },
+
     getGenre(elementGenre){
       const findEl = this.genresArray.find((element) => {
         return element.id == elementGenre;
       });
+
       if (findEl) {
         return findEl.name;
       }
       return elementGenre;
+    },
+
+    getActors(elementId){
+      const self = this;
+      return axios.get(apiUri + 'movie/' + elementId + '/credits', {
+        params: {
+          api_key: apiKey,
+        }
+      })
+        .then(function(resp) {
+          let actorList =[];
+          let actorArray = resp.data.cast;
+          actorArray.forEach((el, i) => {
+            actorList.push(el.name)
+          });
+
+          console.log('Array del cast di attori: ', actorList);
+          let actors = '';
+
+          for (let i = 0; i < 5; i++) {
+            actors += (' - ' + actorList[i])
+          }
+
+        return self.actors = actors
+        });
     },
   },
 });
