@@ -97,32 +97,32 @@ new Vue({
           });
       }
     },
+    // funzione per le stelle
     getStars(vote) {
       return Math.ceil(vote / 2);
     },
-
+    // fuozione per le bandiere
     getFlags(language) {
       return 'img/flags/' + language + '.png';
     },
-
+    // funzione per i poster
     getPoster(poster_path) {
       if(poster_path) {
         return apiImg + sizeImg + poster_path;
       }
       return 'img/not-found.png';
     },
-
+    // funzione per trovare il genere
     getGenre(elementGenre){
       const findEl = this.genresArray.find((element) => {
         return element.id == elementGenre;
       });
-
       if (findEl) {
         return findEl.name;
       }
       return elementGenre;
     },
-
+    // funzione per mostrare gli attori con una chiamata ajax con axios
     getActors(elementId){
       const self = this;
       return axios.get(apiUri + 'movie/' + elementId + '/credits', {
@@ -132,7 +132,7 @@ new Vue({
       })
       .then(function(resp) {
         self.credits = resp.data.cast.slice(0,5);
-        console.log('Array del cast di attori: ', resp.data.cast.slice(0,5));
+        console.log('Array del cast di attori di film: ', resp.data.cast.slice(0,5));
       });
     },
   },
