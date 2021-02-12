@@ -13,7 +13,7 @@ new Vue({
     titleText: '',
     loading: false,
     genresArray: [],
-    actors: '',
+    credits: [],
   },
   mounted() {
 
@@ -130,22 +130,10 @@ new Vue({
           api_key: apiKey,
         }
       })
-        .then(function(resp) {
-          let actorList =[];
-          let actorArray = resp.data.cast;
-          actorArray.forEach((el, i) => {
-            actorList.push(el.name)
-          });
-
-          console.log('Array del cast di attori: ', actorList);
-          let actors = '';
-
-          for (let i = 0; i < 5; i++) {
-            actors += (' - ' + actorList[i])
-          }
-
-        return self.actors = actors
-        });
+      .then(function(resp) {
+        self.credits = resp.data.cast.slice(0,5);
+        console.log('Array del cast di attori: ', resp.data.cast.slice(0,5));
+      });
     },
   },
 });
