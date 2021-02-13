@@ -132,7 +132,7 @@ new Vue({
       })
       .then(function(resp) {
         self.credits = resp.data.cast.slice(0,5);
-        console.log('Array del cast di attori di film: ', resp.data.cast.slice(0,5));
+        console.log('Array del cast di attori: ', resp.data.cast.slice(0,5));
       });
     },
   },
