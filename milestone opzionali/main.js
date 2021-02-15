@@ -132,7 +132,16 @@ new Vue({
       })
       .then(function(resp) {
         self.credits = resp.data.cast.slice(0,5);
-        console.log('Array del cast di attori: ', resp.data.cast.slice(0,5));
+        console.log('Array del cast di attori di film: ', resp.data.cast.slice(0,5));
+      });
+      return axios.get(apiUri + 'tv/' + elementId + '/credits', {
+        params: {
+          api_key: apiKey,
+        }
+      })
+      .then(function(resp) {
+        self.credits = resp.data.cast.slice(0,5);
+        console.log('Array del cast di attori di serie tv: ', resp.data.cast.slice(0,5));
       });
     },
   },
