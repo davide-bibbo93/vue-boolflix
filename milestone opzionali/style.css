@@ -108,8 +108,7 @@ header{
 }
 
 .left-header .menu-list li{
-  margin-left: 20px;
-  padding-left: 20px;
+  padding-left: 50px;
   font-size: 15px;
   font-weight: bold;
   color: #b3b3b3;
@@ -169,6 +168,13 @@ header{
 
 .search-button i:hover{
   transform: scale(1.05);
+}
+
+select {
+  width: 20px;
+  outline: none;
+  background-color: #2b2b2b;
+  color: #fff;
 }
 
 .notice-bell{

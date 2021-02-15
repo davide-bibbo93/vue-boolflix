@@ -162,7 +162,7 @@ new Vue({
       }
     },
     filterByGenre(id) {
-      if(this.selected === '' || this.selected === 'All' || id.includes(this.selected)) {
+      if(this.selected === '' || this.selected === 'Tutti i generi' || id.includes(this.selected)) {
         return true;
       } else {
         return false;

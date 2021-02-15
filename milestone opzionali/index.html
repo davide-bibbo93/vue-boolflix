@@ -31,10 +31,16 @@
 
         <!-- sezione input e button -->
         <div class="right-header fl">
+
           <input class="search-input" type="text" name="" value=""
           placeholder="Cerca un film o serieTv..." v-model="searchText" @keyup.enter="search">
           <button class="search-button" type="button" name="button"
           @click="search"><i class="fa fa-search" aria-hidden="true"></i></button>
+          
+          <select v-model="selected">
+            <option>Tutti i generi</option>
+            <option v-for="genre in genresArray" :value="genre.id">{{genre.name}}</option>
+          </select>
 
           <ul class="notice-list fr">
             <li><i class="fa fa-gift" style="padding-right: 25px;"></i></li>
@@ -48,12 +54,6 @@
             </div>
           </ul>
         </div>
-
-        <select v-model="selected">
-          <option disabled value="">Filter by Genre</option>
-          <option>Tutti i generi</option>
-          <option v-for="genre in genresArray" :value="genre.id">{{genre.name}}</option>
-        </select>
 
       </header>
 
