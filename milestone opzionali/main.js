@@ -14,6 +14,7 @@ new Vue({
     loading: false,
     genresArray: [],
     credits: [],
+    selected: '',
   },
   mounted() {
   },
@@ -158,6 +159,13 @@ new Vue({
           self.credits = resp.data.cast.slice(0,5);
           console.log('tv', elementId, 'Array del cast di attori di serie tv: ', resp.data.cast.slice(0,5));
         });
+      }
+    },
+    filterByGenre(id) {
+      if(this.selected === '' || this.selected === 'All' || id.includes(this.selected)) {
+        return true;
+      } else {
+        return false;
       }
     },
     // },funzione che svuota ricerche effettuate
