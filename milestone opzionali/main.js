@@ -159,6 +159,7 @@ new Vue({
           console.log('tv', elementId, 'Array del cast di attori di serie tv: ', resp.data.cast.slice(0,5));
         });
       }
+    },
     // },funzione che svuota ricerche effettuate
     backHome(){
       this.results = [];
