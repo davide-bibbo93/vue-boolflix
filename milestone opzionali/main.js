@@ -12,7 +12,6 @@ new Vue({
     searchText: '',
     titleText: '',
     loading: false,
-    pageNotFound: false,
     genresArray: [],
     credits: [],
   },
@@ -161,17 +160,10 @@ new Vue({
         });
       }
     },
-    // funzione di errore di inserimento apikey
-    apiKeyNotValid() {
-
-      if (this.apiKey.length < 32) {
-        this.pageNotFound = true;
-        console.log('api_key wrong')
-      } else if (this.apiKey !== 'd697a14c56f5dc39b8a8034bfcea2fc1') {
-        this.pageNotFound = true;
-        console.log('api_key not valid')
-      }
-    },
+    backHome(){
+      this.results = [];
+      this.titleText = '';
+    }
   },
 });
 Vue.config.devtools = true;

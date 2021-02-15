@@ -15,23 +15,12 @@
     <!-- contenitore totale -->
     <div id="app">
 
-      <!-- sezione errore apikey -->
-      <div id="alert" v-if="pageNotFound === true">
-        <div class="set-alert">
-          <img src="img/dinoerror.png" alt="">
-          <h2>Impossibile raggiungere il sito.</h2> <br>
-          <a href="#">Prova ad eseguire lo strumento Diagnostica di rete Windows.</a> <br>
-          <span>ERR_ADDRESS_UNREACHABLE</span>
-        </div>
-      </div>
-
-      <header v-else>
-
+      <header>
         <!-- sezione logo -->
         <div class="left-header fl">
           <img src="img/logo-boolflix.png" alt="">
           <ul class="menu-list">
-            <li>Home</li>
+            <li @click="backHome()">Home</li>
             <li>Serie TV</li>
             <li>Film</li>
             <li>Originali</li>
@@ -61,6 +50,8 @@
           </ul>
 
         </div>
+
+
       </header>
 
       <!-- sezione risultati -->
@@ -69,11 +60,11 @@
         <h2 v-if="loading">Ricerca in corso...</h2>
         <h2 v-else-if="titleText && results.length">Risultati per: "{{titleText}}"</h2>
         <h2 v-else-if="titleText">Nessun risultato trovato per "{{titleText}}"</h2>
-        <h2 v-else-if="results.length <= 0">Ancora nessuna ricerca effettuata...</h2>
+        <h2 v-else-if="results.length <= 0">Non hai effettuato nessuna ricerca...</h2>
 
         <!-- sezione carte film e serie tv -->
         <div class="title" v-if="results.length > 0">Film e serieTV abbinati alla ricerca: </div>
-        <div class="cards fl" v-for="result in results">
+        <div class="cards fl fadeInResults" v-for="result in results">
 
           <div class="inside-cards"  @mouseenter="getActors(result)">
             <!-- front-end carte -->

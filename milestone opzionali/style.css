@@ -19,6 +19,23 @@
   border-radius: 20px;
 }
 
+.fadeInResults {
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+  -moz-animation: fadeIn ease 2s;
+  -o-animation: fadeIn ease 2s;
+  -ms-animation: fadeIn ease 2s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity:0.2;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
 body{
   font-family: 'Lato', sans-serif;
 }
@@ -223,11 +240,12 @@ header{
   height: 100%;
 }
 
-.cards:hover .inside-cards > .back-card {
+.cards:hover .back-card,
+.cards:hover .front-card {
   display: block;
   background-color: #000;
   opacity: 0.9;
-  z-index: 1;
+  transform: scale(1.15);
 }
 
 .back-card {
