@@ -15,7 +15,17 @@
     <!-- contenitore totale -->
     <div id="app">
 
-      <header>
+      <!-- sezione errore apikey -->
+      <div id="alert" v-if="pageNotFound === true">
+        <div class="set-alert">
+          <img src="img/dinoerror.png" alt="">
+          <h2>Impossibile raggiungere il sito.</h2> <br>
+          <a href="#">Prova ad eseguire lo strumento Diagnostica di rete Windows.</a> <br>
+          <span>ERR_ADDRESS_UNREACHABLE</span>
+        </div>
+      </div>
+
+      <header v-else>
 
         <!-- sezione logo -->
         <div class="left-header fl">
@@ -55,7 +65,7 @@
 
       <!-- sezione risultati -->
       <div class="container" id="result-container">
-        <!-- sezione carimento -->
+        <!-- sezione carimento pagina -->
         <h2 v-if="loading">Ricerca in corso...</h2>
         <h2 v-else-if="titleText && results.length">Risultati per: "{{titleText}}"</h2>
         <h2 v-else-if="titleText">Nessun risultato trovato per "{{titleText}}"</h2>
@@ -63,9 +73,9 @@
 
         <!-- sezione carte film e serie tv -->
         <div class="title" v-if="results.length > 0">Film e serieTV abbinati alla ricerca: </div>
-        <div class="cards fl" v-for="result in results" @mouseOver="getActors(result.id)">
+        <div class="cards fl" v-for="result in results">
 
-          <div class="inside-cards">
+          <div class="inside-cards"  @mouseenter="getActors(result)">
             <!-- front-end carte -->
             <div class="front-card">
               <img :src="getPoster(result.poster_path)" alt="">
